@@ -14,7 +14,7 @@ export const BoardComponent: FC<BoardProps> = ({ board, setBoard }) => {
         return (
           <React.Fragment key={index}>
             {row.map((cell) => (
-              <CellComponent />
+              <CellComponent cell={cell} key={cell.id} />
             ))}
           </React.Fragment>
         );
