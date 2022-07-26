@@ -42,3 +42,7 @@
   max-width: 70%;
   position: relative;
 }
+
+.selected {
+  background-color: brown;
+}
