@@ -18,4 +18,9 @@ export class Board {
       this.cells.push(row);
     }
   }
+  getCell(x: number, y: number) {
+    return this.cells[y][x];
+  }
+
+  addFigures() {}
 }

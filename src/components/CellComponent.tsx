@@ -6,5 +6,5 @@ interface CellProps {
 }
 
 export const CellComponent: FC<CellProps> = ({ cell }) => {
-  return <div className={`cell ${cell.color}`}></div>;
+  return <div className={`cell ${cell.color}`}>{cell.figure}</div>;
 };
