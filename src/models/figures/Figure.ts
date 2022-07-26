@@ -13,7 +13,7 @@ export enum FigureNames {
 
 export class Figure {
   color: Colors;
-  logo: typeof Logo | null;
+  logo: typeof logo | null;
   cell: Cell;
   name: FigureNames;
   id: number;
@@ -31,4 +31,6 @@ export class Figure {
   canMove(target: Cell): boolean {
     return true;
   }
+
+  moveFigure(target: Cell) {}
 }

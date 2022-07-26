@@ -37,3 +37,8 @@
 .white {
   background-color: #eed4ac;
 }
+
+.figure {
+  max-width: 70%;
+  position: relative;
+}
