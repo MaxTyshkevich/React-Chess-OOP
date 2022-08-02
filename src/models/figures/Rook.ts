@@ -18,6 +18,13 @@ export class Rook extends Figure {
       return false;
     }
 
-    return true;
+    if (this.cell.isEmptyVertical(target)) {
+      return true;
+    }
+    if (this.cell.isEmptyHorisontal(target)) {
+      return true;
+    }
+
+    return false;
   }
 }

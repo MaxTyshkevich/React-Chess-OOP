@@ -54,3 +54,7 @@
   border-radius: 50%;
   background-color: #22c022;
 }
+.showPlayer:first-letter {
+  text-transform: uppercase;
+  font-weight: 500;
+}

@@ -94,4 +94,11 @@ export class Cell {
   isEmpty(): boolean {
     return this.figure === null;
   }
+
+  isEnemy(target: Cell) {
+    if (target.figure) {
+      return this.figure?.color !== target.figure.color;
+    }
+    return false;
+  }
 }
