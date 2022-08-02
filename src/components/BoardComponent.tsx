@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Board } from "../models/Board";
 import { Cell } from "../models/Cell";
 import { CellComponent } from "./CellComponent";
@@ -9,13 +9,37 @@ interface BoardProps {
 }
 
 export const BoardComponent: FC<BoardProps> = ({ board, setBoard }) => {
-  const [selected, setSelected] = useState<Cell | null>(null);
+  const [selectedCell, setSelectedCell] = useState<Cell | null>(null);
 
   const handleClick = (cell: Cell): void => {
-    if (cell.figure) {
-      setSelected(cell);
+    if (
+      selectedCell &&
+      selectedCell !== cell &&
+      selectedCell.figure?.canMove(cell)
+    ) {
+      selectedCell.moveFigure(cell);
+      setSelectedCell(null);
+      updateBoard();
+    } else {
+      if (cell.figure) {
+        setSelectedCell(cell);
+      }
     }
   };
+
+  const hightlightCells = (): void => {
+    board.hightlightCells(selectedCell);
+    updateBoard();
+  };
+
+  const updateBoard = (): void => {
+    const newBoard = board.getCopyBoard();
+    setBoard(newBoard);
+  };
+
+  useEffect(() => {
+    hightlightCells();
+  }, [selectedCell]);
 
   return (
     <div className="board">
@@ -26,7 +50,9 @@ export const BoardComponent: FC<BoardProps> = ({ board, setBoard }) => {
               <CellComponent
                 cell={cell}
                 key={cell.id}
-                selected={selected?.x === cell.x && selected?.y === cell.y}
+                selected={
+                  selectedCell?.x === cell.x && selectedCell?.y === cell.y
+                }
                 handleClick={handleClick}
               />
             ))}

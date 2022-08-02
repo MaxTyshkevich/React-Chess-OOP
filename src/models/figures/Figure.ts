@@ -29,6 +29,15 @@ export class Figure {
   }
 
   canMove(target: Cell): boolean {
+    if (target.figure?.color === this.color) {
+      /* фигуры одинакового цвета, есть их нельзя */
+      return false;
+    }
+
+    if (target.figure?.name === FigureNames.KING) {
+      return false;
+    }
+
     return true;
   }
 

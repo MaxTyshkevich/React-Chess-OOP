@@ -16,7 +16,9 @@ export const CellComponent: FC<CellProps> = ({
     <div
       className={`cell ${cell.color} ${selected && "selected"}`}
       onClick={() => handleClick(cell)}
+      style={{ background: cell.available && cell.figure ? "green" : "" }}
     >
+      {cell.available && !cell.figure && <div className="available"></div>}
       {cell.figure?.logo && (
         <img className="figure" src={cell.figure.logo} alt={cell.figure.name} />
       )}
